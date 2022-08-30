@@ -8,11 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['detail.page.scss'],
 })
 export class DetailPage implements OnInit, OnDestroy {
-  
-  film: any; 
-  constructor(private router: Router,  
-    private activatedRoute: ActivatedRoute,  
-    private http: HttpClient) {​​​​​​}​​​​​​
+  film: any;
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   goBack() {
     this.router.navigate(['/login']);
@@ -22,10 +23,10 @@ export class DetailPage implements OnInit, OnDestroy {
     // With Routing in Ionic, The OnInit lifecycle hook
     // may not get called consistently.
     console.log('DetailPage - OnInit');
-    let id=this.activatedRoute.snapshot.paramMap.get('id'); 
-    this.http.get(`https://swapi.dev/api/films/${​​​​​​id}​​​​​​`).subscribe(res=>{​​​​​​ 
-      this.film=res; 
-    }​​​​​​);
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.http.get(`https://swapi.dev/api/films/${id}`).subscribe((res) => {
+      this.film = res;
+    });
   }
 
   ngOnDestroy() {
